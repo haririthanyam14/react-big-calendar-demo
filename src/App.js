@@ -6,11 +6,19 @@ import 'react-big-calendar/lib/css/react-big-calendar.css'
 const localizer = momentLocalizer(moment) // or globalizeLocalizer
 
 function App() {
+  
+  function selectSlot(slotInfo) {
+    alert(JSON.stringify(slotInfo));
+    console.log(slotInfo)
+  }
+
   return (
     <Calendar
       localizer={localizer}
       startAccessor="start"
       endAccessor="end"
+      selectable
+      onSelectSlot={(slotInfo) => selectSlot(slotInfo)}
     />
   );
 }
