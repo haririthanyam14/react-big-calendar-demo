@@ -8,8 +8,10 @@ const localizer = momentLocalizer(moment) // or globalizeLocalizer
 function App() {
   
   function selectSlot(slotInfo) {
-    alert(JSON.stringify(slotInfo));
     console.log(slotInfo)
+    const startDateTime = moment(slotInfo.start).local().format('YYYY-MM-DD HH:mm:ss');
+    const endDateTime = moment(slotInfo.end).local().format('YYYY-MM-DD HH:mm:ss');
+    alert(`${startDateTime}, ${endDateTime}`);
   }
 
   return (
@@ -19,6 +21,7 @@ function App() {
       endAccessor="end"
       selectable
       onSelectSlot={(slotInfo) => selectSlot(slotInfo)}
+      step={45} //time in minutes
     />
   );
 }
